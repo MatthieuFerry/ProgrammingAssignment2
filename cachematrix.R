@@ -2,12 +2,14 @@
 
 makeCacheMatrix <- function(x = matrix()) {
         cache_value <- NULL
-        # sets the matrix to use by passing it to the makeCacheMatrix environment (x variable) and resets the cache value 'cache_value'
+        # sets the matrix to use by passing it to the makeCacheMatrix
+        # environment (x variable) and resets the cache value 'cache_value'
         set <- function(y) {
                 x <<- y
                 cache_value <<- NULL
         }
-        # gets the matrix used either defined by the 'set' function or by calling 'makeCacheMatrix' with a matrix
+        # gets the matrix used either defined by the 'set' function or by
+        # calling 'makeCacheMatrix' with a matrix
         get <- function() x
         # sets the cache value by passing it to the makeCacheMatrix environment
         setCache <- function(cache) cache_value <<- cache
@@ -20,12 +22,11 @@ makeCacheMatrix <- function(x = matrix()) {
              getCache = getCache)
 }
 
-## cacheSolve actually calcule the inverse of a square matrix by either calling the 'solve' function
-## or by using the already cached value
-## x should be a named list with functions attached as defined in makeCacheMatrix
+## cacheSolve actually computes the inverse of a square matrix by either calling
+## the 'solve' function or by using the already cached value x should be a named
+## list with functions attached as defined in makeCacheMatrix
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
         my_inverse_matrix <- x$getCache()
         ## Is the result already cached ?
         if(!is.null(my_inverse_matrix)) {
@@ -42,9 +43,9 @@ cacheSolve <- function(x, ...) {
         my_inverse_matrix
 }
 
-############################################
-## Example of code for using in practice
-############################################
+####################
+## Example of code
+####################
 
 ## 1 : load the source file
 # source("cachematrix.R")
